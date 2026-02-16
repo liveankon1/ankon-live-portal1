@@ -1,0 +1,20 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="55%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <circle cx="600" cy="460" r="200" fill="#0b1224" stroke="url(#ring)" stroke-width="8"/>
+  <circle cx="600" cy="430" r="76" fill="#16213f"/>
+  <rect x="390" y="620" width="420" height="240" rx="120" fill="#16213f"/>
+  <circle cx="210" cy="220" r="130" fill="#22d3ee" fill-opacity="0.16"/>
+  <circle cx="980" cy="290" r="180" fill="#f472b6" fill-opacity="0.12"/>
+  <text x="600" y="1040" text-anchor="middle" fill="#cbd5e1" font-size="52" font-family="Segoe UI, Arial">Replace with your uploaded photo</text>
+</svg>

@@ -1,0 +1,88 @@
+﻿[
+  {
+    "id": "nebula-commerce",
+    "title": "Nebula Commerce Engine",
+    "shortDescription": "AI-assisted storefront with realtime conversion analytics and cinematic checkout UX.",
+    "longDescription": "Nebula Commerce Engine blends conversion-focused design and custom analytics. Built with Next.js and edge functions, it tracks user behavior in realtime and surfaces conversion opportunities through live dashboards.",
+    "tags": ["Next.js", "Stripe", "Analytics", "Edge"],
+    "status": "Live",
+    "repoUrl": "https://github.com/ankon/nebula-commerce",
+    "demoUrl": "https://example.com/nebula",
+    "featured": true
+  },
+  {
+    "id": "pulse-stream",
+    "title": "Pulse Stream Dashboard",
+    "shortDescription": "Streaming metrics dashboard for creators with low-latency data and scene controls.",
+    "longDescription": "A high-frequency dashboard designed for streamers and esports teams. It includes modular widgets, low-latency websocket feeds, and alerting presets for traffic spikes.",
+    "tags": ["WebSocket", "TypeScript", "Realtime", "UI"],
+    "status": "Live",
+    "repoUrl": "https://github.com/ankon/pulse-stream",
+    "demoUrl": "https://example.com/pulse",
+    "featured": true
+  },
+  {
+    "id": "orbit-cms",
+    "title": "Orbit CMS Studio",
+    "shortDescription": "Headless content management toolkit with block editor and granular publishing workflows.",
+    "longDescription": "Orbit CMS Studio gives teams a visual block editor, content versioning, and role-based workflows. Optimized for rapid campaign launches and multi-channel content delivery.",
+    "tags": ["CMS", "PostgreSQL", "Prisma", "RBAC"],
+    "status": "In Progress",
+    "repoUrl": "https://github.com/ankon/orbit-cms",
+    "demoUrl": "https://example.com/orbit",
+    "featured": true
+  },
+  {
+    "id": "arcade-labs",
+    "title": "Arcade Labs Portal",
+    "shortDescription": "Gamified product-launch portal with missions, rewards, and social progress tracking.",
+    "longDescription": "A community-first launch platform featuring mission-based onboarding, leaderboard APIs, and event-driven notifications. Designed for product teams and creator communities.",
+    "tags": ["Gamification", "Events", "Redis", "Community"],
+    "status": "Live",
+    "repoUrl": "https://github.com/ankon/arcade-labs",
+    "demoUrl": "https://example.com/arcade",
+    "featured": true
+  },
+  {
+    "id": "vault-ops",
+    "title": "Vault Ops Console",
+    "shortDescription": "Operations command center for deployment health, incidents, and rollback controls.",
+    "longDescription": "Vault Ops Console centralizes deployment visibility and incident handling with actionable timelines and command shortcuts. Engineered for fast incident response.",
+    "tags": ["DevOps", "Observability", "SRE", "Node"],
+    "status": "In Progress",
+    "repoUrl": "https://github.com/ankon/vault-ops",
+    "demoUrl": "https://example.com/vault",
+    "featured": true
+  },
+  {
+    "id": "echo-contact",
+    "title": "Echo Contact AI",
+    "shortDescription": "Conversational support layer that summarizes tickets and suggests instant responses.",
+    "longDescription": "Echo Contact AI helps support teams resolve cases faster using intent grouping and draft suggestions. Includes SLA tracking and quality scorecards.",
+    "tags": ["AI", "Support", "NLP", "Automation"],
+    "status": "Planned",
+    "repoUrl": "https://github.com/ankon/echo-contact",
+    "demoUrl": "https://example.com/echo",
+    "featured": true
+  },
+  {
+    "id": "stellar-feed",
+    "title": "Stellar Feed",
+    "shortDescription": "High-performance content feed with ranking, personalization, and trend detection.",
+    "longDescription": "Stellar Feed powers personalized content streams using ranking signals and trend heuristics. Built to remain fast under sustained traffic bursts.",
+    "tags": ["Feed", "Ranking", "Performance"],
+    "status": "Live",
+    "repoUrl": "https://github.com/ankon/stellar-feed",
+    "demoUrl": "https://example.com/stellar"
+  },
+  {
+    "id": "nova-notes",
+    "title": "Nova Notes",
+    "shortDescription": "Minimal writing app with markdown, sync, and focus-mode collaboration.",
+    "longDescription": "Nova Notes combines realtime collaboration and distraction-free writing workflows. Includes markdown publishing, keyboard-first commands, and encrypted sync.",
+    "tags": ["Markdown", "Collaboration", "PWA"],
+    "status": "In Progress",
+    "repoUrl": "https://github.com/ankon/nova-notes",
+    "demoUrl": "https://example.com/nova"
+  }
+]

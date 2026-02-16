@@ -5,8 +5,8 @@
         <h2 className="text-2xl font-semibold text-cyan-50">Let&apos;s build something unforgettable</h2>
         <p className="mt-2 text-slate-200">Available for collaborations, freelance product builds, and creative experiments.</p>
         <div className="mt-5 flex flex-wrap gap-3">
-          <a href="mailto:ankon@example.com" className="rounded-lg border border-cyan-200/40 bg-slate-900/35 px-4 py-2 text-sm font-medium text-cyan-50">
-            ankon@example.com
+          <a href="mailto:bindankon@gmail.com" className="rounded-lg border border-cyan-200/40 bg-slate-900/35 px-4 py-2 text-sm font-medium text-cyan-50">
+            bindankon@gmail.com
           </a>
           <a href="/contact" className="rounded-lg border border-slate-500/40 bg-slate-900/30 px-4 py-2 text-sm font-medium text-slate-100">
             Contact Page

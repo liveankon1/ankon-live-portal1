@@ -50,15 +50,14 @@ export const HeroSection = () => {
       >
         <div className="glass relative overflow-hidden rounded-3xl p-6">
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-200/10 via-transparent to-fuchsia-300/12" />
-          <div className="relative z-10 mx-auto flex max-w-[320px] items-center justify-center rounded-full bg-cyan-300/5 p-2 ring-1 ring-cyan-200/20">
+          <div className="relative z-10 mx-auto flex max-w-[420px] items-center justify-center rounded-2xl bg-cyan-300/5 p-2 ring-1 ring-cyan-200/20">
             <Image
-              src="/ankon-hero.gif"
+              src="/ankon-hero.png"
               alt="Ankon hero portrait"
-              width={320}
-              height={320}
+              width={420}
+              height={420}
               priority
-              unoptimized
-              className="h-auto w-full rounded-full object-contain"
+              className="h-auto w-full rounded-2xl object-contain"
             />
           </div>
         </div>

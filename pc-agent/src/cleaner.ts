@@ -114,7 +114,18 @@ export const cleanRecycleBin = async (): Promise<CleanResult> => {
         "-NoProfile",
         "-NonInteractive",
         "-Command",
-        "Clear-RecycleBin -Force -ErrorAction Stop"
+        "$ErrorActionPreference='Stop'; " +
+          "$issues = @(); " +
+          "$drives = Get-PSDrive -PSProvider FileSystem | Select-Object -ExpandProperty Root; " +
+          "foreach($root in $drives){ " +
+          "  $letter = $root.Substring(0,1); " +
+          "  try { Clear-RecycleBin -DriveLetter $letter -Force -ErrorAction Stop | Out-Null } " +
+          "  catch { " +
+          "    $msg = $_.Exception.Message; " +
+          "    if($msg -notmatch 'cannot find the path specified'){ $issues += ('Drive ' + $letter + ': ' + $msg) } " +
+          "  } " +
+          "}; " +
+          "if($issues.Count -gt 0){ $issues | ForEach-Object { Write-Error $_ }; exit 1 }"
       ],
       { windowsHide: true, timeout: 60000 }
     );

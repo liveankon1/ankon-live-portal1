@@ -21,7 +21,7 @@
         </label>
 
         <a
-          href="mailto:ankon@example.com?subject=Project%20Inquiry"
+          href="mailto:bindankon@gmail.com?subject=Project%20Inquiry"
           className="inline-flex w-fit rounded-lg border border-cyan-300/45 bg-cyan-300/20 px-4 py-2 text-sm font-semibold text-cyan-50"
         >
           Send via Email

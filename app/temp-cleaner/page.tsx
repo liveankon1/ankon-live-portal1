@@ -36,6 +36,7 @@ export default function TempCleanerPage() {
   const [logs, setLogs] = useState<string[]>([]);
   const [status, setStatus] = useState<StatusResponse | null>(null);
   const [result, setResult] = useState<CleanResponse | null>(null);
+  const [tokenCopied, setTokenCopied] = useState(false);
 
   useEffect(() => {
     try {
@@ -63,6 +64,27 @@ export default function TempCleanerPage() {
   const pushLog = (message: string) => {
     const stamp = new Date().toLocaleTimeString();
     setLogs((prev) => [`[${stamp}] ${message}`, ...prev].slice(0, 40));
+  };
+
+  const generateToken = () => {
+    const bytes = new Uint8Array(32);
+    window.crypto.getRandomValues(bytes);
+    const nextToken = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+    setToken(nextToken);
+    setTokenCopied(false);
+    pushLog("Generated new pairing token. Save it in pc-agent/.env as AUTH_TOKEN.");
+  };
+
+  const copyToken = async () => {
+    if (!token.trim()) return;
+    try {
+      await navigator.clipboard.writeText(token.trim());
+      setTokenCopied(true);
+      pushLog("Token copied to clipboard.");
+      setTimeout(() => setTokenCopied(false), 1200);
+    } catch {
+      pushLog("Clipboard copy failed. Copy token manually.");
+    }
   };
 
   const testConnection = async () => {
@@ -159,6 +181,25 @@ export default function TempCleanerPage() {
               placeholder="Enter X-Auth-Token"
               aria-label="Auth token"
             />
+            <div className="mt-2 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={generateToken}
+                className="rounded-md border border-slate-500/50 bg-slate-800/70 px-3 py-1.5 text-xs font-medium text-slate-100"
+              >
+                Generate Token
+              </button>
+              <button
+                type="button"
+                onClick={copyToken}
+                className="rounded-md border border-slate-500/50 bg-slate-800/70 px-3 py-1.5 text-xs font-medium text-slate-100"
+              >
+                {tokenCopied ? "Copied" : "Copy Token"}
+              </button>
+            </div>
+            <p className="mt-2 text-xs text-slate-400">
+              PC setup: paste this value into <code>pc-agent/.env</code> as <code>AUTH_TOKEN=...</code>, then restart agent.
+            </p>
           </label>
 
           <div className="flex flex-wrap gap-3">

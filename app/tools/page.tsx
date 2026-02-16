@@ -28,22 +28,26 @@ const toolCards: ToolCard[] = [
   {
     title: "Image Compressor",
     description: "Coming soon: compress images with quality presets and instant preview.",
-    status: "coming-soon"
+    href: "/tools/image-compressor",
+    status: "ready"
   },
   {
     title: "Color Palette Lab",
     description: "Coming soon: generate and export cinematic palette systems.",
-    status: "coming-soon"
+    href: "/tools/palette",
+    status: "ready"
   },
   {
     title: "JSON Formatter",
     description: "Coming soon: format, validate, and compare JSON payloads.",
-    status: "coming-soon"
+    href: "/tools/json",
+    status: "ready"
   },
   {
     title: "Markdown Studio",
     description: "Coming soon: write markdown with live render and export options.",
-    status: "coming-soon"
+    href: "/tools/markdown",
+    status: "ready"
   }
 ];
 

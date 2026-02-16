@@ -85,7 +85,7 @@ export default function TempCleanerPage() {
     }
   };
 
-  const runClean = async () => {
+  const runAction = async (action: "temp" | "recycle") => {
     if (!baseUrl) return;
     if (!token.trim()) {
       pushLog("Token is required.");
@@ -94,10 +94,11 @@ export default function TempCleanerPage() {
 
     setLoading("cleaning");
     setResult(null);
-    pushLog("Starting temp cleanup...");
+    const endpoint = action === "temp" ? "/api/clean-temp" : "/api/clean-recycle";
+    pushLog(`Starting ${action === "temp" ? "temp" : "recycle bin"} cleanup...`);
 
     try {
-      const res = await fetch(`${baseUrl}/api/clean-temp`, {
+      const res = await fetch(`${baseUrl}${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -109,10 +110,10 @@ export default function TempCleanerPage() {
       setResult(data);
       if (data.ok) {
         pushLog(
-          `Cleanup done. Deleted ${data.deletedFiles || 0} files, freed ${formatBytes(data.freedBytes || 0)}`
+          `${action === "temp" ? "Temp" : "Recycle"} cleanup done. Deleted ${data.deletedFiles || 0} files, freed ${formatBytes(data.freedBytes || 0)}`
         );
       } else {
-        pushLog(`Cleanup failed: ${data.error || "unknown error"}`);
+        pushLog(`${action === "temp" ? "Temp" : "Recycle"} cleanup failed: ${data.error || data.errors?.[0] || "unknown error"}`);
       }
     } catch (error) {
       const msg = (error as Error).message;
@@ -121,6 +122,11 @@ export default function TempCleanerPage() {
     } finally {
       setLoading("idle");
     }
+  };
+
+  const runBoth = async () => {
+    await runAction("temp");
+    await runAction("recycle");
   };
 
   return (
@@ -166,11 +172,27 @@ export default function TempCleanerPage() {
             </button>
             <button
               type="button"
-              onClick={runClean}
+              onClick={() => runAction("temp")}
               disabled={loading !== "idle"}
               className="rounded-lg border border-fuchsia-300/40 bg-fuchsia-400/15 px-4 py-2 text-sm font-medium text-fuchsia-100 disabled:opacity-55"
             >
               {loading === "cleaning" ? "Cleaning..." : "Temp Clean"}
+            </button>
+            <button
+              type="button"
+              onClick={() => runAction("recycle")}
+              disabled={loading !== "idle"}
+              className="rounded-lg border border-amber-300/40 bg-amber-400/15 px-4 py-2 text-sm font-medium text-amber-100 disabled:opacity-55"
+            >
+              {loading === "cleaning" ? "Cleaning..." : "Recycle Clean"}
+            </button>
+            <button
+              type="button"
+              onClick={runBoth}
+              disabled={loading !== "idle"}
+              className="rounded-lg border border-emerald-300/40 bg-emerald-400/15 px-4 py-2 text-sm font-medium text-emerald-100 disabled:opacity-55"
+            >
+              {loading === "cleaning" ? "Cleaning..." : "Clean Both"}
             </button>
           </div>
         </div>

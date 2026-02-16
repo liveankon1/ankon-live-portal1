@@ -48,16 +48,19 @@ export const HeroSection = () => {
         style={{ transform }}
         className="glow-border rounded-3xl p-[1px] mobile-reduced-motion"
       >
-        <div className="glass relative overflow-hidden rounded-3xl p-4">
+        <div className="glass relative overflow-hidden rounded-3xl p-6">
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-200/10 via-transparent to-fuchsia-300/12" />
-          <Image
-            src="/ankon-hero.svg"
-            alt="Ankon hero portrait"
-            width={900}
-            height={900}
-            priority
-            className="relative z-10 h-auto w-full rounded-2xl object-cover"
-          />
+          <div className="relative z-10 mx-auto flex max-w-[320px] items-center justify-center rounded-full bg-cyan-300/5 p-2 ring-1 ring-cyan-200/20">
+            <Image
+              src="/ankon-hero.gif"
+              alt="Ankon hero portrait"
+              width={320}
+              height={320}
+              priority
+              unoptimized
+              className="h-auto w-full rounded-full object-contain"
+            />
+          </div>
         </div>
       </motion.div>
     </section>

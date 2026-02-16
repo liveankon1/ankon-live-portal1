@@ -3,11 +3,12 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import type { Route } from "next";
 
 type ToolCard = {
   title: string;
   description: string;
-  href?: string;
+  href?: Route;
   status: "ready" | "coming-soon";
 };
 

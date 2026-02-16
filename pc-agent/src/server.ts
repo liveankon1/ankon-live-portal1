@@ -49,9 +49,30 @@ if (subnetBase == null) {
 }
 
 const isAllowedSubnet = (ip: string) => {
+  if (ip === "127.0.0.1" || ip === "::1") return true;
   const numeric = ipv4ToInt(ip);
   if (numeric == null) return false;
   return (numeric & subnetMask) === (subnetBase & subnetMask);
+};
+
+const isAllowedOrigin = (origin: string) => {
+  const configured = ALLOWED_ORIGIN
+    .split(",")
+    .map((v) => v.trim())
+    .filter(Boolean);
+
+  if (configured.includes(origin)) return true;
+
+  try {
+    const u = new URL(origin);
+    const host = u.hostname;
+    const port = u.port || (u.protocol === "https:" ? "443" : "80");
+    if (port !== "3000") return false;
+    if (host === "localhost" || host === "127.0.0.1") return true;
+    return isAllowedSubnet(host);
+  } catch {
+    return false;
+  }
 };
 
 const enforceNetworkScope = (req: Request, res: Response, next: NextFunction) => {
@@ -70,21 +91,19 @@ const enforceToken = (req: Request, res: Response, next: NextFunction) => {
   return next();
 };
 
-if (ALLOWED_ORIGIN) {
-  app.use(
-    cors({
-      origin: (origin, callback) => {
-        if (!origin || origin === ALLOWED_ORIGIN) {
-          callback(null, true);
-          return;
-        }
-        callback(new Error("Blocked by CORS"));
-      },
-      methods: ["GET", "POST"],
-      allowedHeaders: ["Content-Type", "X-Auth-Token"]
-    })
-  );
-}
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || isAllowedOrigin(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(new Error("Blocked by CORS"));
+    },
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "X-Auth-Token"]
+  })
+);
 
 app.use(express.json());
 app.use(enforceNetworkScope);
@@ -116,6 +135,6 @@ app.listen(PORT, "0.0.0.0", () => {
   console.log(`Temp Cleaner agent listening on http://0.0.0.0:${PORT}`);
   console.log(`Allowed subnet: ${ALLOWED_SUBNET}`);
   if (ALLOWED_ORIGIN) {
-    console.log(`Allowed origin: ${ALLOWED_ORIGIN}`);
+    console.log(`Allowed origin override(s): ${ALLOWED_ORIGIN}`);
   }
 });

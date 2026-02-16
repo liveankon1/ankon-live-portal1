@@ -30,13 +30,14 @@ const formatBytes = (bytes: number) => {
 };
 
 export default function TempCleanerPage() {
-  const [pcAddress, setPcAddress] = useState("192.168.1.50:8787");
+  const [pcAddress, setPcAddress] = useState("");
   const [token, setToken] = useState("");
   const [loading, setLoading] = useState<"idle" | "testing" | "cleaning">("idle");
   const [logs, setLogs] = useState<string[]>([]);
   const [status, setStatus] = useState<StatusResponse | null>(null);
   const [result, setResult] = useState<CleanResponse | null>(null);
   const [tokenCopied, setTokenCopied] = useState(false);
+  const [localLink, setLocalLink] = useState("");
 
   useEffect(() => {
     try {
@@ -49,6 +50,15 @@ export default function TempCleanerPage() {
       // Ignore invalid local storage payload.
     }
   }, []);
+
+  useEffect(() => {
+    if (pcAddress.trim()) return;
+    const host = window.location.hostname;
+    if (!host) return;
+    if (host === "localhost" || host === "127.0.0.1" || /^\d{1,3}(\.\d{1,3}){3}$/.test(host)) {
+      setPcAddress(`${host}:8787`);
+    }
+  }, [pcAddress]);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ pcAddress, token }));
@@ -64,6 +74,32 @@ export default function TempCleanerPage() {
   const pushLog = (message: string) => {
     const stamp = new Date().toLocaleTimeString();
     setLogs((prev) => [`[${stamp}] ${message}`, ...prev].slice(0, 40));
+  };
+
+  useEffect(() => {
+    const raw = pcAddress.trim();
+    if (!raw) {
+      setLocalLink("");
+      return;
+    }
+    const host = raw.split(":")[0];
+    if (!host) {
+      setLocalLink("");
+      return;
+    }
+    setLocalLink(`http://${host}:3000/temp-cleaner`);
+  }, [pcAddress]);
+
+  const useCurrentHost = () => {
+    const host = window.location.hostname;
+    if (!host) return;
+    setPcAddress(`${host}:8787`);
+    pushLog(`PC address set from current host: ${host}:8787`);
+  };
+
+  const openLocalCleaner = () => {
+    if (!localLink) return;
+    window.location.href = localLink;
   };
 
   const generateToken = () => {
@@ -157,6 +193,26 @@ export default function TempCleanerPage() {
       <p className="mt-2 text-slate-300">
         Local network only. Requires token authentication.
       </p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <button
+          type="button"
+          onClick={useCurrentHost}
+          className="rounded-md border border-slate-500/50 bg-slate-800/70 px-3 py-1.5 text-xs font-medium text-slate-100"
+        >
+          Use Current Host
+        </button>
+        <button
+          type="button"
+          onClick={openLocalCleaner}
+          disabled={!localLink}
+          className="rounded-md border border-cyan-300/45 bg-cyan-400/15 px-3 py-1.5 text-xs font-medium text-cyan-100 disabled:opacity-50"
+        >
+          Open Local Cleaner Page
+        </button>
+        {localLink ? (
+          <span className="self-center text-xs text-slate-400">{localLink}</span>
+        ) : null}
+      </div>
 
       <div className="mt-6 rounded-2xl border border-slate-600/60 bg-slate-900/60 p-5">
         <div className="grid gap-4">

@@ -2,7 +2,7 @@ import "dotenv/config";
 import cors from "cors";
 import express, { Request, Response, NextFunction } from "express";
 import os from "node:os";
-import { cleanTemp } from "./cleaner.js";
+import { cleanRecycleBin, cleanTemp } from "./cleaner.js";
 
 const PORT = Number(process.env.PORT || 8787);
 const AUTH_TOKEN = process.env.AUTH_TOKEN || "";
@@ -100,6 +100,11 @@ app.get("/api/status", (_req, res) => {
 
 app.post("/api/clean-temp", enforceToken, async (_req, res) => {
   const result = await cleanTemp();
+  res.json(result);
+});
+
+app.post("/api/clean-recycle", enforceToken, async (_req, res) => {
+  const result = await cleanRecycleBin();
   res.json(result);
 });
 

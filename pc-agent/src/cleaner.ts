@@ -1,5 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
 
 export type CleanResult = {
   ok: boolean;
@@ -15,6 +17,7 @@ type Accumulator = {
 };
 
 const WINDOWS_TEMP_DIR = "C:\\Windows\\Temp";
+const execFileAsync = promisify(execFile);
 
 const normalizePath = (p: string) => path.resolve(p).toLowerCase();
 
@@ -101,4 +104,33 @@ export const cleanTemp = async (): Promise<CleanResult> => {
     freedBytes: acc.freedBytes,
     errors: acc.errors
   };
+};
+
+export const cleanRecycleBin = async (): Promise<CleanResult> => {
+  try {
+    await execFileAsync(
+      "powershell.exe",
+      [
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "Clear-RecycleBin -Force -ErrorAction Stop"
+      ],
+      { windowsHide: true, timeout: 60000 }
+    );
+
+    return {
+      ok: true,
+      deletedFiles: 0,
+      freedBytes: 0,
+      errors: []
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      deletedFiles: 0,
+      freedBytes: 0,
+      errors: [(error as Error).message]
+    };
+  }
 };

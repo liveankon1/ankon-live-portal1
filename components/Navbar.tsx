@@ -8,6 +8,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
+  { href: "/temp-cleaner", label: "Cleaner" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" }
 ];

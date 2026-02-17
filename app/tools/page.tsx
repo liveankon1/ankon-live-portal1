@@ -14,40 +14,90 @@ type ToolCard = {
 
 const toolCards: ToolCard[] = [
   {
-    title: "QR Code Generator",
-    description: "Generate downloadable QR codes with color, size, and correction control.",
+    title: "Quantum QR Forge",
+    description: "Generate high-fidelity QR codes with styling controls and instant export.",
     href: "/tools/qr",
     status: "ready"
   },
   {
-    title: "URL Shortener",
-    description: "Create local short links, copy quickly, and keep a recent history.",
+    title: "Nebula Link Shortener",
+    description: "Create ultra-fast local short links with copy/open actions and history.",
     href: "/tools/shortener",
     status: "ready"
   },
   {
-    title: "Image Compressor",
-    description: "Coming soon: compress images with quality presets and instant preview.",
+    title: "Photon Image Compressor",
+    description: "Compress images locally with quality presets and side-by-side visual preview.",
     href: "/tools/image-compressor",
     status: "ready"
   },
   {
-    title: "Color Palette Lab",
-    description: "Coming soon: generate and export cinematic palette systems.",
+    title: "Prism Palette Lab",
+    description: "Generate cinematic color systems and copy production-ready hex palettes.",
     href: "/tools/palette",
     status: "ready"
   },
   {
-    title: "JSON Formatter",
-    description: "Coming soon: format, validate, and compare JSON payloads.",
+    title: "Syntax JSON Forge",
+    description: "Validate, format, minify, and clean JSON payloads in one panel.",
     href: "/tools/json",
     status: "ready"
   },
   {
-    title: "Markdown Studio",
-    description: "Coming soon: write markdown with live render and export options.",
+    title: "Markdown Command Deck",
+    description: "Write markdown with live preview and export workflow for notes/docs.",
     href: "/tools/markdown",
     status: "ready"
+  },
+  {
+    title: "Password Generator",
+    description: "Generate strong passwords with custom length and symbol policies.",
+    status: "coming-soon"
+  },
+  {
+    title: "Unit Converter",
+    description: "Instantly convert length, weight, speed, temperature, and data units.",
+    status: "coming-soon"
+  },
+  {
+    title: "Base64 Toolbox",
+    description: "Encode/decode Base64 strings and files for quick dev workflows.",
+    status: "coming-soon"
+  },
+  {
+    title: "UUID + Token Lab",
+    description: "Generate UUID v4, nano IDs, and random secure tokens.",
+    status: "coming-soon"
+  },
+  {
+    title: "Regex Playground",
+    description: "Test regex patterns live with match highlights and explanations.",
+    status: "coming-soon"
+  },
+  {
+    title: "Text Diff Checker",
+    description: "Compare two text blocks and highlight exact line-level differences.",
+    status: "coming-soon"
+  },
+  {
+    title: "Meta Tag Preview",
+    description: "Preview Open Graph, Twitter card, and SEO meta snippets.",
+    status: "coming-soon"
+  },
+  {
+    title: "Color Contrast Checker",
+    description: "Check WCAG contrast ratios for text/background color pairs.",
+    status: "coming-soon"
+  },
+  {
+    title: "Timestamp Converter",
+    description: "Convert Unix timestamps to local/UTC date-time and back.",
+    status: "coming-soon"
+  },
+  {
+    title: "Cron Builder",
+    description: "Build and validate cron expressions with human-readable output.",
+    status: "coming-soon"
   }
 ];
 
@@ -64,8 +114,8 @@ export default function ToolsPage() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-12 md:px-6">
       <div className="rounded-3xl border border-slate-600/50 bg-slate-900/45 p-5 backdrop-blur-xl md:p-7">
-        <p className="text-xs uppercase tracking-[0.25em] text-cyan-200/80">Tools Deck</p>
-        <h1 className="mt-2 text-4xl font-bold text-slate-50">Futuristic Utility Hub</h1>
+        <p className="text-xs uppercase tracking-[0.25em] text-cyan-200/80">Ankon Systems</p>
+        <h1 className="mt-2 text-4xl font-bold text-slate-50">Ankon Futuristic Utility Hub</h1>
         <p className="mt-3 max-w-3xl text-slate-300">
           Launch practical tools with a premium interface. Ready tools are live, locked tiles are staged for upcoming releases.
         </p>
@@ -87,20 +137,24 @@ export default function ToolsPage() {
             key={tool.title}
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            whileHover={tool.status === "ready" ? { y: -6 } : {}}
+            whileHover={tool.status === "ready" ? { y: -7 } : { y: -2 }}
             className={`group relative overflow-hidden rounded-2xl border p-5 shadow-card ${
               tool.status === "ready"
-                ? "border-cyan-300/30 bg-slate-900/55"
-                : "border-slate-600/35 bg-slate-900/35 opacity-75"
+                ? "border-emerald-300/35 bg-slate-900/55"
+                : "border-rose-500/35 bg-slate-900/40"
             }`}
           >
             <div
               className={`pointer-events-none absolute inset-0 ${
-                tool.status === "ready" ? "opacity-0 transition duration-300 group-hover:opacity-100" : "opacity-0"
+                tool.status === "ready"
+                  ? "opacity-0 transition duration-300 group-hover:opacity-100"
+                  : "opacity-100"
               }`}
               style={{
                 background:
-                  "radial-gradient(circle at top right, color-mix(in srgb, var(--accent-color) 34%, transparent), transparent 60%)"
+                  tool.status === "ready"
+                    ? "radial-gradient(circle at top right, rgba(16,185,129,0.34), rgba(16,185,129,0.05), transparent 60%)"
+                    : "linear-gradient(120deg, rgba(244,63,94,0.20), rgba(127,29,29,0.06), rgba(244,63,94,0.20))"
               }}
             />
 
@@ -110,8 +164,8 @@ export default function ToolsPage() {
                 <span
                   className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] ${
                     tool.status === "ready"
-                      ? "border border-emerald-300/40 bg-emerald-300/15 text-emerald-100"
-                      : "border border-slate-500/40 bg-slate-500/15 text-slate-200"
+                      ? "border border-emerald-300/45 bg-emerald-300/20 text-emerald-100"
+                      : "border border-rose-300/45 bg-rose-400/20 text-rose-100"
                   }`}
                 >
                   {tool.status === "ready" ? "Ready" : "Locked"}
@@ -123,7 +177,7 @@ export default function ToolsPage() {
               {tool.href ? (
                 <Link
                   href={tool.href}
-                  className="mt-5 inline-flex rounded-lg border border-cyan-300/35 bg-cyan-300/15 px-4 py-2 text-sm font-semibold text-cyan-100 transition hover:shadow-glow"
+                  className="mt-5 inline-flex rounded-lg border border-emerald-300/40 bg-emerald-300/20 px-4 py-2 text-sm font-semibold text-emerald-100 transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(16,185,129,0.35)]"
                 >
                   Open Tool
                 </Link>
@@ -131,9 +185,9 @@ export default function ToolsPage() {
                 <button
                   type="button"
                   disabled
-                  className="mt-5 inline-flex cursor-not-allowed rounded-lg border border-slate-500/40 bg-slate-600/20 px-4 py-2 text-sm font-semibold text-slate-300"
+                  className="mt-5 inline-flex cursor-not-allowed rounded-lg border border-rose-300/35 bg-rose-500/15 px-4 py-2 text-sm font-semibold text-rose-100"
                 >
-                  Coming Soon
+                  Locked - Coming Soon
                 </button>
               )}
             </div>

@@ -26,6 +26,12 @@ const toolCards: ToolCard[] = [
     status: "ready"
   },
   {
+    title: "Ankon Premiume Optimizer C++",
+    description: "Brutal-cool release page with cinematic artwork and direct package download.",
+    href: "/tools/optimizer",
+    status: "ready"
+  },
+  {
     title: "Photon Image Compressor",
     description: "Compress images locally with quality presets and side-by-side visual preview.",
     href: "/tools/image-compressor",

@@ -26,8 +26,8 @@ export const HeroSection = () => {
 
         <div className="mt-8 flex flex-wrap gap-4">
           <MagneticButton
-            href="/Ankon-Resume.pdf"
-            ariaLabel="Download resume"
+            href="/downloads"
+            ariaLabel="Open downloads page"
             className="rounded-xl border border-cyan-300/40 bg-cyan-300/20 px-5 py-3 text-sm font-semibold text-cyan-50 shadow-glow"
           >
             Download

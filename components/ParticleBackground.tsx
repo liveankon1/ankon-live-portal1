@@ -186,5 +186,9 @@ export const ParticleBackground = () => {
     document.documentElement.style.setProperty("--glow-intensity", String(settings.glowIntensity));
   }, [activeAccent, settings.glowIntensity]);
 
+  if (aboutMode) {
+    return null;
+  }
+
   return <Particles id="universe-particles" init={particlesInit} options={options} />;
 };

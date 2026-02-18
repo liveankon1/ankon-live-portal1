@@ -47,8 +47,10 @@ export default function AboutPage() {
                 <Image
                   src="/about-social-media.png"
                   alt="Social media style visual"
-                  width={1624}
-                  height={1074}
+                  width={1536}
+                  height={1024}
+                  quality={100}
+                  unoptimized
                   className="h-auto w-full object-cover"
                   priority
                 />

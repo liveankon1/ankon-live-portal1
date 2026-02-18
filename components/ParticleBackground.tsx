@@ -69,7 +69,7 @@ export const ParticleBackground = () => {
     }
 
     if (aboutMode) {
-      const aboutDensity = mobile ? 34 : 68;
+      const aboutDensity = mobile ? 42 : 84;
       return {
         fullScreen: { enable: true, zIndex: -3 },
         fpsLimit: 60,
@@ -84,24 +84,24 @@ export const ParticleBackground = () => {
           },
           shape: { type: "circle" },
           opacity: {
-            value: { min: 0.28, max: 0.68 },
-            animation: { enable: true, speed: 0.35, minimumValue: 0.2, sync: false }
+            value: { min: 0.34, max: 0.82 },
+            animation: { enable: true, speed: 0.4, minimumValue: 0.24, sync: false }
           },
           size: {
-            value: { min: 1.6, max: 4.2 },
-            animation: { enable: true, speed: 0.55, minimumValue: 1, sync: false }
+            value: { min: 2, max: 5 },
+            animation: { enable: true, speed: 0.65, minimumValue: 1.25, sync: false }
           },
           move: {
             enable: true,
-            speed: 0.55 * speed,
+            speed: 0.62 * speed,
             random: true,
             outModes: { default: "out" }
           },
           links: {
             enable: true,
-            distance: mobile ? 115 : 155,
-            opacity: 0.28,
-            width: 1.3,
+            distance: mobile ? 125 : 170,
+            opacity: 0.4,
+            width: 1.6,
             color: "random"
           }
         },
@@ -113,8 +113,8 @@ export const ParticleBackground = () => {
             resize: true
           },
           modes: {
-            grab: { distance: 150, links: { opacity: 0.45 } },
-            push: { quantity: 4 }
+            grab: { distance: 165, links: { opacity: 0.58 } },
+            push: { quantity: 5 }
           }
         }
       };

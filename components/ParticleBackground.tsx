@@ -69,35 +69,40 @@ export const ParticleBackground = () => {
     }
 
     if (aboutMode) {
-      const aboutDensity = mobile ? 26 : 52;
+      const aboutDensity = mobile ? 34 : 68;
       return {
         fullScreen: { enable: true, zIndex: -3 },
         fpsLimit: 60,
         detectRetina: true,
         particles: {
           number: { value: aboutDensity, density: { enable: true, area: 980 } },
-          color: { value: ["#93c5fd", "#a5b4fc", "#67e8f9"] },
+          color: {
+            value: "#ff0000",
+            animation: {
+              h: { enable: true, speed: 22, sync: false }
+            }
+          },
           shape: { type: "circle" },
           opacity: {
-            value: { min: 0.16, max: 0.42 },
-            animation: { enable: true, speed: 0.25, minimumValue: 0.12, sync: false }
+            value: { min: 0.28, max: 0.68 },
+            animation: { enable: true, speed: 0.35, minimumValue: 0.2, sync: false }
           },
           size: {
-            value: { min: 1, max: 2.6 },
-            animation: { enable: true, speed: 0.3, minimumValue: 0.8, sync: false }
+            value: { min: 1.6, max: 4.2 },
+            animation: { enable: true, speed: 0.55, minimumValue: 1, sync: false }
           },
           move: {
             enable: true,
-            speed: 0.45 * speed,
+            speed: 0.55 * speed,
             random: true,
             outModes: { default: "out" }
           },
           links: {
             enable: true,
-            distance: mobile ? 100 : 140,
-            opacity: 0.15,
-            width: 1,
-            color: "#93c5fd"
+            distance: mobile ? 115 : 155,
+            opacity: 0.28,
+            width: 1.3,
+            color: "random"
           }
         },
         interactivity: {
@@ -108,8 +113,8 @@ export const ParticleBackground = () => {
             resize: true
           },
           modes: {
-            grab: { distance: 130, links: { opacity: 0.3 } },
-            push: { quantity: 3 }
+            grab: { distance: 150, links: { opacity: 0.45 } },
+            push: { quantity: 4 }
           }
         }
       };
@@ -185,10 +190,6 @@ export const ParticleBackground = () => {
     document.documentElement.style.setProperty("--accent-color", activeAccent);
     document.documentElement.style.setProperty("--glow-intensity", String(settings.glowIntensity));
   }, [activeAccent, settings.glowIntensity]);
-
-  if (aboutMode) {
-    return null;
-  }
 
   return <Particles id="universe-particles" init={particlesInit} options={options} />;
 };

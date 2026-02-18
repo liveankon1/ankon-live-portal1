@@ -26,13 +26,6 @@ export default function DownloadsPage() {
               >
                 Download Optimizer
               </a>
-              <a
-                href="/Ankon-Resume.pdf"
-                download
-                className="rounded-xl border border-cyan-300/40 bg-cyan-300/15 px-6 py-3 text-sm font-semibold text-cyan-100 transition hover:-translate-y-0.5 hover:shadow-[0_0_26px_rgba(34,211,238,0.35)]"
-              >
-                Download Resume
-              </a>
             </div>
 
             <div className="mt-6 rounded-2xl border border-slate-600/45 bg-slate-950/70 p-4">

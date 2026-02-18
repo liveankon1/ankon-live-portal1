@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function DownloadsPage() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-12 md:px-6">
+    <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
       <div className="relative overflow-hidden rounded-3xl border border-fuchsia-300/35 bg-slate-900/60 p-6 md:p-8">
         <div className="pointer-events-none absolute -left-20 top-0 h-64 w-64 rounded-full bg-cyan-400/25 blur-3xl" />
         <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-fuchsia-500/25 blur-3xl" />
@@ -20,12 +21,14 @@ export default function DownloadsPage() {
             <div className="mt-7 flex flex-wrap gap-3">
               <a
                 href="/Ankon-Premiume-Optimizer-Cpp.rar"
+                download
                 className="rounded-xl border border-emerald-300/45 bg-emerald-400/20 px-6 py-3 text-sm font-semibold text-emerald-100 transition hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(16,185,129,0.45)]"
               >
                 Download Optimizer
               </a>
               <a
                 href="/Ankon-Resume.pdf"
+                download
                 className="rounded-xl border border-cyan-300/40 bg-cyan-300/15 px-6 py-3 text-sm font-semibold text-cyan-100 transition hover:-translate-y-0.5 hover:shadow-[0_0_26px_rgba(34,211,238,0.35)]"
               >
                 Download Resume
@@ -41,11 +44,15 @@ export default function DownloadsPage() {
           </article>
 
           <article className="rounded-2xl border border-fuchsia-200/30 bg-slate-950/65 p-2">
-            <div
-              className="h-[250px] rounded-xl bg-cover bg-center md:h-[360px]"
-              style={{ backgroundImage: "url('/ankon-premium-optimizer-showcase.png')" }}
-              aria-label="Ankon Premiume Optimizer preview"
-            />
+            <div className="relative h-[300px] rounded-xl bg-gradient-to-br from-slate-900 via-indigo-950/70 to-fuchsia-950/40 md:h-[460px]">
+              <Image
+                src="/ankon-premium-optimizer-showcase.png"
+                alt="Ankon Premiume Optimizer preview"
+                fill
+                priority
+                className="rounded-xl object-contain p-2"
+              />
+            </div>
           </article>
         </div>
       </div>

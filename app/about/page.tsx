@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { RainbowNeonBackground } from "@/components/about/RainbowNeonBackground";
 
 const links = [
   { label: "GitHub", href: "https://github.com/liveankon1" },
@@ -9,14 +10,15 @@ const links = [
 
 export default function AboutPage() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-12 md:px-6">
+    <section id="about-social-root" className="mx-auto max-w-6xl px-4 py-12 md:px-6">
       <div className="relative overflow-hidden rounded-3xl border border-cyan-300/30 bg-slate-900/55 p-6 backdrop-blur-xl md:p-8">
+        <RainbowNeonBackground />
         <div className="pointer-events-none absolute -left-20 top-0 h-56 w-56 rounded-full bg-cyan-400/20 blur-3xl" />
         <div className="pointer-events-none absolute right-10 top-12 h-16 w-16 rounded-2xl border border-indigo-300/25 bg-indigo-400/20" />
         <div className="pointer-events-none absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-fuchsia-500/20 blur-3xl" />
 
         <div className="relative z-10 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-          <aside className="rounded-2xl border border-slate-600/50 bg-slate-950/80 p-5">
+          <aside data-about-card className="rounded-2xl border border-slate-600/50 bg-slate-950/80 p-5">
             <p className="text-xs uppercase tracking-[0.2em] text-cyan-200/80">About Me</p>
             <h1 className="mt-2 text-4xl font-bold text-slate-50">HI Developers!!</h1>
 

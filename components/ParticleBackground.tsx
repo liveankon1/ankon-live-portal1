@@ -12,7 +12,8 @@ export const ParticleBackground = () => {
   const { settings } = useParticleSettings();
   const pathname = usePathname();
   const toolsMode = pathname === "/tools" || pathname.startsWith("/tools/");
-  const activeAccent = toolsMode ? "#34d399" : settings.accentColor;
+  const aboutMode = pathname === "/about" || pathname.startsWith("/about/");
+  const activeAccent = toolsMode ? "#34d399" : aboutMode ? "#60a5fa" : settings.accentColor;
 
   const options = useMemo(() => {
     const mobile = isMobileDevice();
@@ -62,6 +63,53 @@ export const ParticleBackground = () => {
           modes: {
             repulse: { distance: 115, duration: 0.28 },
             push: { quantity: 6 }
+          }
+        }
+      };
+    }
+
+    if (aboutMode) {
+      const aboutDensity = mobile ? 26 : 52;
+      return {
+        fullScreen: { enable: true, zIndex: -3 },
+        fpsLimit: 60,
+        detectRetina: true,
+        particles: {
+          number: { value: aboutDensity, density: { enable: true, area: 980 } },
+          color: { value: ["#93c5fd", "#a5b4fc", "#67e8f9"] },
+          shape: { type: "circle" },
+          opacity: {
+            value: { min: 0.16, max: 0.42 },
+            animation: { enable: true, speed: 0.25, minimumValue: 0.12, sync: false }
+          },
+          size: {
+            value: { min: 1, max: 2.6 },
+            animation: { enable: true, speed: 0.3, minimumValue: 0.8, sync: false }
+          },
+          move: {
+            enable: true,
+            speed: 0.45 * speed,
+            random: true,
+            outModes: { default: "out" }
+          },
+          links: {
+            enable: true,
+            distance: mobile ? 100 : 140,
+            opacity: 0.15,
+            width: 1,
+            color: "#93c5fd"
+          }
+        },
+        interactivity: {
+          detectsOn: "window",
+          events: {
+            onHover: { enable: true, mode: ["grab"] },
+            onClick: { enable: true, mode: ["push"] },
+            resize: true
+          },
+          modes: {
+            grab: { distance: 130, links: { opacity: 0.3 } },
+            push: { quantity: 3 }
           }
         }
       };
@@ -127,7 +175,7 @@ export const ParticleBackground = () => {
     }
 
     return base;
-  }, [settings, activeAccent, toolsMode]);
+  }, [settings, activeAccent, toolsMode, aboutMode]);
 
   const particlesInit = async (engine: any) => {
     await loadFull(engine);

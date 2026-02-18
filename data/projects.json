@@ -22,6 +22,17 @@
     "featured": true
   },
   {
+    "id": "ankon-premiume-optimizer-cpp",
+    "title": "Ankon Premiume Optimizer C++",
+    "shortDescription": "Premium software drop page with cinematic preview art and direct package download.",
+    "longDescription": "Dedicated release experience for Ankon Premiume Optimizer C++ with high-impact visuals, focused call-to-action, and downloadable archive delivery from the site.",
+    "tags": ["C++", "Release", "Landing", "Download"],
+    "status": "Live",
+    "repoUrl": "https://github.com/liveankon1/ankon-live-portal1",
+    "demoUrl": "https://ankon-live-portal1-6txz.vercel.app/tools/optimizer",
+    "featured": true
+  },
+  {
     "id": "quantum-qr-forge",
     "title": "Quantum QR Forge",
     "shortDescription": "Advanced QR generator with size, color, correction-level controls and PNG export.",

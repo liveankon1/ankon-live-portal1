@@ -17,7 +17,7 @@ export const HeroSection = () => {
         </div>
 
         <h1 className="text-4xl font-bold leading-tight text-slate-50 sm:text-5xl md:text-6xl">
-          Ankon <span className="text-gradient">Projects Universe</span>
+          Ankon&apos;s <span className="text-gradient">Live Website</span>
         </h1>
 
         <p className="mt-5 max-w-xl text-base text-slate-300 md:text-lg">

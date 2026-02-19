@@ -6,7 +6,7 @@ import { PageShell } from "@/components/PageShell";
 import { ParticleSettingsProvider } from "@/components/providers/ParticleSettingsProvider";
 
 export const metadata: Metadata = {
-  title: "Ankon Projects Universe",
+  title: "Ankon's Live Website",
   description: "Cinematic portfolio experience built with Next.js 14"
 };
 

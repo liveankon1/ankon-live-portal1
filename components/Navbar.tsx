@@ -73,7 +73,7 @@ export const Navbar = () => {
     <header className="sticky top-0 z-30 border-b border-slate-700/45 bg-slate-950/60 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6" aria-label="Primary">
         <Link href="/" className="text-sm font-semibold tracking-wide text-slate-100 md:text-base">
-          Ankon Projects Universe
+          Ankon&apos;s Live Website
         </Link>
 
         <motion.ul

@@ -1,9 +1,9 @@
 ﻿[
   {
     "id": "ankon-projects-universe",
-    "title": "Ankon Projects Universe",
+    "title": "Ankon's Live Website",
     "shortDescription": "Primary portfolio command center with cinematic UI, animated nav, and premium motion system.",
-    "longDescription": "Ankon Projects Universe is the flagship portfolio platform with App Router architecture, motion-first interactions, and modular component structure for rapid expansion.",
+    "longDescription": "Ankon's Live Website is the flagship portfolio platform with App Router architecture, motion-first interactions, and modular component structure for rapid expansion.",
     "tags": ["Next.js", "TypeScript", "Framer Motion", "Portfolio"],
     "status": "Live",
     "repoUrl": "https://github.com/liveankon1/ankon-live-portal1",

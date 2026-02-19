@@ -1,4 +1,4 @@
-﻿# Ankon Projects Universe
+# Ankon's Live Website
 
 Cinematic portfolio site built with Next.js 14 App Router, TypeScript, TailwindCSS, Framer Motion, and react-tsparticles.
 

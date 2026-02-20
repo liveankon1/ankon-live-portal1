@@ -14,13 +14,13 @@ type ToolCard = {
 
 const toolCards: ToolCard[] = [
   {
-    title: "Quantum QR Forge",
+    title: "QR Code Maker",
     description: "Generate high-fidelity QR codes with styling controls and instant export.",
     href: "/tools/qr",
     status: "ready"
   },
   {
-    title: "Nebula Link Shortener",
+    title: "Link Shortener",
     description: "Create ultra-fast local short links with copy/open actions and history.",
     href: "/tools/shortener",
     status: "ready"
@@ -32,25 +32,25 @@ const toolCards: ToolCard[] = [
     status: "ready"
   },
   {
-    title: "Photon Image Compressor",
+    title: "Image Compressor",
     description: "Compress images locally with quality presets and side-by-side visual preview.",
     href: "/tools/image-compressor",
     status: "ready"
   },
   {
-    title: "Prism Palette Lab",
+    title: "Color Palette Generator",
     description: "Generate cinematic color systems and copy production-ready hex palettes.",
     href: "/tools/palette",
     status: "ready"
   },
   {
-    title: "Syntax JSON Forge",
+    title: "JSON Formatter",
     description: "Validate, format, minify, and clean JSON payloads in one panel.",
     href: "/tools/json",
     status: "ready"
   },
   {
-    title: "Markdown Command Deck",
+    title: "Markdown Editor",
     description: "Write markdown with live preview and export workflow for notes/docs.",
     href: "/tools/markdown",
     status: "ready"
@@ -121,7 +121,7 @@ export default function ToolsPage() {
     <section className="mx-auto max-w-6xl px-4 py-12 md:px-6">
       <div className="rounded-3xl border border-slate-600/50 bg-slate-900/45 p-5 backdrop-blur-xl md:p-7">
         <p className="text-xs uppercase tracking-[0.25em] text-cyan-200/80">Ankon Systems</p>
-        <h1 className="mt-2 text-4xl font-bold text-slate-50">Ankon Futuristic Utility Hub</h1>
+        <h1 className="mt-2 text-4xl font-bold text-slate-50">Ankon&apos;s Tool Box</h1>
         <p className="mt-3 max-w-3xl text-slate-300">
           Launch practical tools with a premium interface. Ready tools are live, locked tiles are staged for upcoming releases.
         </p>

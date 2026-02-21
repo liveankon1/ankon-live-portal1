@@ -26,13 +26,23 @@ export default function DownloadsPage() {
               >
                 Download Optimizer
               </a>
+              <a
+                href="/Venson-Client-Silent.exe"
+                download
+                className="rounded-xl border border-cyan-300/45 bg-cyan-400/20 px-6 py-3 text-sm font-semibold text-cyan-100 transition hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(34,211,238,0.45)]"
+              >
+                Download Venson Client [Silent]
+              </a>
             </div>
 
             <div className="mt-6 rounded-2xl border border-slate-600/45 bg-slate-950/70 p-4">
               <p className="text-sm text-slate-300">
                 Package: <span className="text-fuchsia-200">Ankon Premiume Optimizer C++.rar</span>
               </p>
-              <p className="mt-1 text-xs text-slate-400">Format: RAR | Optimized release | Cinematic UI build</p>
+              <p className="mt-1 text-sm text-slate-300">
+                Package: <span className="text-cyan-200">Venson Client [Silent].exe</span>
+              </p>
+              <p className="mt-1 text-xs text-slate-400">Format: RAR/EXE | Optimized release | Cinematic UI build</p>
             </div>
           </article>
 
@@ -61,3 +71,4 @@ export default function DownloadsPage() {
     </section>
   );
 }
+

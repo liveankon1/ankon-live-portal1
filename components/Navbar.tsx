@@ -8,6 +8,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 
 const navItems = [
   { href: "/", label: "Home" },
+  { href: "/live", label: "Live" },
   { href: "/downloads", label: "Downloads" },
   { href: "/tools", label: "Tools" },
   { href: "/reviews", label: "Reviews" },
@@ -114,3 +115,4 @@ export const Navbar = () => {
     </header>
   );
 };
+

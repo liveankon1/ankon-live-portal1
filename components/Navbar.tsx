@@ -1,13 +1,14 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-const navItems = [
-  { href: "/", label: "Home" },
+const publicItems = [{ href: "/", label: "Home" }];
+
+const privateItems = [
   { href: "/live", label: "Live" },
   { href: "/downloads", label: "Downloads" },
   { href: "/tools", label: "Tools" },
@@ -18,11 +19,30 @@ const navItems = [
 
 export const Navbar = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const shellRef = useRef<HTMLUListElement | null>(null);
+  const [unlocked, setUnlocked] = useState(false);
+  const [showAccessForm, setShowAccessForm] = useState(false);
+  const [password, setPassword] = useState("");
+  const [accessDenied, setAccessDenied] = useState(false);
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 140, damping: 20, mass: 0.3 });
   const springY = useSpring(y, { stiffness: 140, damping: 20, mass: 0.3 });
+  const navItems = unlocked ? [...publicItems, ...privateItems] : publicItems;
+
+  useEffect(() => {
+    const privateAccess = window.localStorage.getItem("privateAccessUnlocked") === "true";
+    setUnlocked(privateAccess);
+  }, []);
+
+  useEffect(() => {
+    if (unlocked) return;
+    if (pathname !== "/") {
+      router.replace("/");
+    }
+  }, [pathname, router, unlocked]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -70,6 +90,21 @@ export const Navbar = () => {
     };
   }, [x, y]);
 
+  const handleUnlock = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (password.trim() === "2009") {
+      window.localStorage.setItem("privateAccessUnlocked", "true");
+      setUnlocked(true);
+      setShowAccessForm(false);
+      setPassword("");
+      setAccessDenied(false);
+      return;
+    }
+
+    setAccessDenied(true);
+    setTimeout(() => setAccessDenied(false), 700);
+  };
+
   return (
     <header className="sticky top-0 z-30 border-b border-slate-700/45 bg-slate-950/60 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6" aria-label="Primary">
@@ -110,9 +145,63 @@ export const Navbar = () => {
               </li>
             );
           })}
+
+          {!unlocked ? (
+            <li className="relative">
+              <motion.button
+                type="button"
+                onClick={() => setShowAccessForm((prev) => !prev)}
+                className="group relative rounded-full border border-rose-400/45 bg-rose-500/18 px-3 py-1.5 text-sm text-rose-100 transition-colors hover:border-rose-300 hover:bg-rose-500/28 hover:text-white"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                aria-label="Private access"
+              >
+                <span className="relative z-10">Private Access</span>
+                <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-rose-400/25 via-red-300/10 to-rose-400/25 opacity-0 blur-sm transition-opacity duration-200 group-hover:opacity-100" />
+              </motion.button>
+
+              <AnimatePresence>
+                {showAccessForm ? (
+                  <motion.form
+                    onSubmit={handleUnlock}
+                    initial={{ opacity: 0, y: -8, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -8, scale: 0.96 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute right-0 top-[calc(100%+10px)] w-60 rounded-2xl border border-rose-400/30 bg-slate-950/95 p-3 shadow-[0_0_24px_rgba(244,63,94,0.35)]"
+                  >
+                    <label htmlFor="private-access-password" className="mb-2 block text-xs text-rose-100/90">
+                      Enter password for private tabs
+                    </label>
+                    <input
+                      id="private-access-password"
+                      type="password"
+                      value={password}
+                      onChange={(event) => setPassword(event.target.value)}
+                      className="w-full rounded-lg border border-rose-300/35 bg-slate-900/90 px-3 py-2 text-sm text-slate-100 outline-none transition focus:border-rose-300 focus:ring-2 focus:ring-rose-400/35"
+                      placeholder="Password"
+                      autoFocus
+                    />
+                    <motion.p
+                      className="mt-2 text-xs text-rose-300"
+                      animate={accessDenied ? { x: [0, -6, 6, -4, 4, 0] } : { x: 0 }}
+                      transition={{ duration: 0.35 }}
+                    >
+                      {accessDenied ? "Access denied" : "Password required"}
+                    </motion.p>
+                    <button
+                      type="submit"
+                      className="mt-3 w-full rounded-lg border border-rose-300/45 bg-rose-500/30 px-3 py-2 text-sm font-medium text-rose-50 transition hover:bg-rose-500/45"
+                    >
+                      Unlock Private Tabs
+                    </button>
+                  </motion.form>
+                ) : null}
+              </AnimatePresence>
+            </li>
+          ) : null}
         </motion.ul>
       </nav>
     </header>
   );
 };
-

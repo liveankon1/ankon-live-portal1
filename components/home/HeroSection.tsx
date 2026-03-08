@@ -13,11 +13,11 @@ export const HeroSection = () => {
       <div>
         <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-300/35 bg-emerald-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-emerald-100">
           <span className="live-dot" aria-hidden="true" />
-          LIVE
+          Aesthetic Profile
         </div>
 
         <h1 className="text-4xl font-bold leading-tight text-slate-50 sm:text-5xl md:text-6xl">
-          Ankon&apos;s <span className="text-gradient">Live Website</span>
+          <span className="text-gradient">About Me</span>
         </h1>
 
         <p className="mt-5 max-w-xl text-base text-slate-300 md:text-lg">

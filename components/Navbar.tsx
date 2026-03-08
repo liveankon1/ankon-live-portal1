@@ -6,7 +6,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motio
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-const publicItems = [{ href: "/", label: "Home" }];
+const publicItems = [{ href: "/", label: "About Me" }];
 
 const privateItems = [
   { href: "/live", label: "Live" },

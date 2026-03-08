@@ -33,11 +33,6 @@ export const Navbar = () => {
   const navItems = unlocked ? [...publicItems, ...privateItems] : publicItems;
 
   useEffect(() => {
-    const privateAccess = window.localStorage.getItem("privateAccessUnlocked") === "true";
-    setUnlocked(privateAccess);
-  }, []);
-
-  useEffect(() => {
     if (unlocked) return;
     if (pathname !== "/") {
       router.replace("/");
@@ -93,7 +88,6 @@ export const Navbar = () => {
   const handleUnlock = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (password.trim() === "2009") {
-      window.localStorage.setItem("privateAccessUnlocked", "true");
       setUnlocked(true);
       setShowAccessForm(false);
       setPassword("");

@@ -28,7 +28,7 @@ export const ThemeMusicPlayer = () => {
 
     void tryAutoplay();
 
-    const startOnFirstInteraction = async () => {
+    const startPlayback = async () => {
       if (cleaned) return;
       if (!audio.paused) return;
       try {
@@ -40,13 +40,17 @@ export const ThemeMusicPlayer = () => {
       }
     };
 
-    window.addEventListener("pointerdown", startOnFirstInteraction, { once: true });
-    window.addEventListener("keydown", startOnFirstInteraction, { once: true });
+    window.addEventListener("mousemove", startPlayback, { once: true });
+    window.addEventListener("mouseover", startPlayback, { once: true });
+    window.addEventListener("pointerdown", startPlayback, { once: true });
+    window.addEventListener("keydown", startPlayback, { once: true });
 
     return () => {
       cleaned = true;
-      window.removeEventListener("pointerdown", startOnFirstInteraction);
-      window.removeEventListener("keydown", startOnFirstInteraction);
+      window.removeEventListener("mousemove", startPlayback);
+      window.removeEventListener("mouseover", startPlayback);
+      window.removeEventListener("pointerdown", startPlayback);
+      window.removeEventListener("keydown", startPlayback);
     };
   }, []);
 
